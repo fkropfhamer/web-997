@@ -1,0 +1,9 @@
+*.log
+**/__pycache__
+.vscode/
+**/DS_STORE
+
+/node_modules/
+
+public/**/*.js
+dist/
