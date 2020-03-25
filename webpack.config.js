@@ -26,9 +26,13 @@ module.exports = [
         module: {
         rules: [
             {
-            test: /\.(js)$/,
-            exclude: /node_modules/,
-            use: ['babel-loader'],
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader", "postcss-loader"]
             },
         ],
         },
@@ -37,6 +41,29 @@ module.exports = [
         },
         output: {
             filename: 'index.js',
+            path: path.resolve(__dirname, 'public'),
+        },
+    },
+    {
+        entry: path.resolve(__dirname, 'src', 'client', 'about.js'),
+        module: {
+        rules: [
+            {
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader", "postcss-loader"]
+            },
+        ],
+        },
+        resolve: {
+            extensions: ['*', '.js'],
+        },
+        output: {
+            filename: 'about.js',
             path: path.resolve(__dirname, 'public'),
         },
     },
