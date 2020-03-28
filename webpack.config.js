@@ -41,7 +41,7 @@ module.exports = [
         },
         output: {
             filename: 'index.js',
-            path: path.resolve(__dirname, 'public'),
+            path: path.resolve(__dirname, 'public', 'js'),
         },
     },
     {
@@ -64,7 +64,7 @@ module.exports = [
         },
         output: {
             filename: 'about.js',
-            path: path.resolve(__dirname, 'public'),
+            path: path.resolve(__dirname, 'public', 'js'),
         },
     },
     /*{
