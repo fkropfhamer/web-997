@@ -67,14 +67,18 @@ module.exports = [
             path: path.resolve(__dirname, 'public', 'js'),
         },
     },
-    /*{
-        entry: path.resolve(__dirname, 'public', 'darkmode.js'),
+    {
+        entry: path.resolve(__dirname, 'src', 'client', 'ml', 'mnist.js'),
         module: {
         rules: [
             {
-            test: /\.(js)$/,
-            exclude: /node_modules/,
-            use: ['babel-loader'],
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader", "postcss-loader"]
             },
         ],
         },
@@ -82,8 +86,8 @@ module.exports = [
             extensions: ['*', '.js'],
         },
         output: {
-            filename: 'darkmode.js',
-            path: path.resolve(__dirname, 'app', 'static'),
+            filename: 'mnist.js',
+            path: path.resolve(__dirname, 'public', 'js'),
         },
-    }*/
+    },
 ];
