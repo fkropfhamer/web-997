@@ -1,0 +1,10 @@
+car
+tree
+flower
+fish
+ant
+clock
+bee
+sun
+star
+cactus
