@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %> 
+    <%- include('../partials/favicons') %> 
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>mnist</h1>
+    <!-- <script async defer src="/static/js/mnist.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script async defer>
+        async function main() {
+            const model = await tf.loadLayersModel('/static/models/mnist/mnist-model.json')
+            const prediction = model.predict(tf.tensor([1,2,3,4]));
+        }
+
+        main();
+    </script>
+</body>
+</html>
