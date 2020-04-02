@@ -18,4 +18,4 @@ describe('indexController test', () => {
         expect(mockResponse.render).toHaveBeenCalled();
         expect(mockResponse.render).toHaveBeenCalledWith('pages/about');
     })
-})
+});

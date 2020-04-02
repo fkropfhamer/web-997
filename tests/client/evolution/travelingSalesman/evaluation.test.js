@@ -1,4 +1,4 @@
-import { euklidianDistance, euklidianDistanceEvaluation } from '../../../src/client/evolution/evaluation';
+import { euklidianDistance, euklidianDistanceEvaluation } from '../../../../src/client/evolution/travelingSalesman/evaluation';
 
 describe('euklidianDistance', () => {
     it('evaluates the right distance', () => {

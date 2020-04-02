@@ -1,4 +1,4 @@
-import { uniqueElementsOfArray, orderRecombination} from '../../../src/client/evolution/recombination';
+import { uniqueElementsOfArray, orderRecombination} from '../../../../src/client/evolution/travelingSalesman/recombination';
 
 describe('uniqueElementsOfArray', () => {
     it('filters duplicates', () => {

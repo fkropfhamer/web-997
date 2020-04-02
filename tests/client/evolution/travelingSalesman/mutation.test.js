@@ -1,4 +1,4 @@
-import { invertArray, exchangeMutation, invertMutation } from '../../../src/client/evolution/mutation';
+import { invertArray, exchangeMutation, invertMutation } from '../../../../src/client/evolution/travelingSalesman/mutation';
 
 describe('invertArray', () => {
     it('inverts an array correct', () => {
