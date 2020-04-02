@@ -1,22 +1,9 @@
 /* eslint-disable no-undef */
 
-async function main() {
+async function predict(pixelMatrix) {
     const model = await tf.loadLayersModel('/static/models/mnist/mnist-model.json')
-    /*const testImg = [];
-    for (let i = 0; i < 28; i++) {
-        const row = []
-        for(let j = 0; j < 28; j++) {
-            row.push(0);
-        }
-        testImg.push(row);
-    }*/
-
-    const testImg = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 18, 18, 18, 126, 136, 175, 26, 166, 255, 247, 127, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 30, 36, 94, 154, 170, 253, 253, 253, 253, 253, 225, 172, 253, 242, 195, 64, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 49, 238, 253, 253, 253, 253, 253, 253, 253, 253, 251, 93, 82, 82, 56, 39, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 18, 219, 253, 253, 253, 253, 253, 198, 182, 247, 241, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 80, 156, 107, 253, 253, 205, 11, 0, 43, 154, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 1, 154, 253, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 139, 253, 190, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 190, 253, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 241, 225, 160, 108, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 240, 253, 253, 119, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 186, 253, 253, 150, 27, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 93, 252, 253, 187, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 249, 253, 249, 64, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 130, 183, 253, 253, 207, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 148, 229, 253, 253, 253, 250, 182, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 114, 221, 253, 253, 253, 253, 201, 78, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 23, 66, 213, 253, 253, 253, 253, 198, 81, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 18, 171, 219, 253, 253, 253, 253, 195, 80, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 55, 172, 226, 253, 253, 253, 253, 244, 133, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 136, 253, 253, 253, 212, 135, 132, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
-
-    console.log(testImg);
-
-    let tensor = tf.tensor(testImg);
+    
+    let tensor = tf.tensor(pixelMatrix);
 
    
 //We add a dimension to get a batch shape 
@@ -27,7 +14,225 @@ async function main() {
     const prediction = model.predict(batched);
 
     const predictionData = await prediction.data();
-    console.log(predictionData.indexOf(Math.max(...predictionData)));
+
+    const probability = Math.max(...predictionData)
+
+    const label = predictionData.indexOf(probability);
+
+    return {label, probability};
+}
+
+function getPixelArray(ctx) {
+    const height = ctx.canvas.height;
+    const width = ctx.canvas.width;
+
+    const imageData = ctx.getImageData(0, 0, width, height);
+    const pixels = imageData.data;
+
+    return pixels;
+}
+
+function getGreyScalePixelArray(ctx) {
+    const pixels = getPixelArray(ctx);
+
+    const greyScalePixels  = pixels.filter((_, i) => (i + 1) % 4 === 0);
+    return greyScalePixels;
+}
+
+function getMinBoundBox(ctx) {
+    const height = ctx.canvas.height;
+    const width = ctx.canvas.width;
+
+    const pixelArray = getGreyScalePixelArray(ctx);
+    const pixelMatrix = chunkArray(pixelArray, width);
+
+    let minY = Infinity;
+    let minX = Infinity;
+    let maxY = -Infinity;
+    let maxX = -Infinity;
+
+
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < height; x++) {
+            const pixel = pixelMatrix[y][x];
+            if (pixel > 0) {
+                if (minX > x) {
+                    minX = x;
+                }
+                if (minY > y) {
+                    minY = y;
+                }
+                if (maxX < x) {
+                    maxX = x;
+                }
+                if (maxY < y) {
+                    maxY = y;
+                }
+            } 
+        }
+    } 
+
+    return { minPoint: { x: minX, y: minY }, maxPoint: { x: maxX, y: maxY } };
+}
+
+function chunkArray(array, chunkSize) {
+    const chunkedArray = [];
+    let index = 0;
+    while (index < array.length) {
+        chunkedArray.push(array.slice(index, chunkSize + index));
+        index += chunkSize;
+    }
+    return chunkedArray;
+} 
+
+function getPixelMatrix(ctx) {
+    const width = ctx.canvas.width;
+
+    const pixelArray = getGreyScalePixelArray(ctx);
+    const pixelMatrix = chunkArray(pixelArray, width);
+
+    return pixelMatrix;
+}
+
+function normalize(ctx) {
+    const boundBox = getMinBoundBox(ctx);
+
+    const boundBoxHeight = boundBox.maxPoint.y - boundBox.minPoint.y;
+    const boundBoxWidth = boundBox.maxPoint.x - boundBox.minPoint.x;
+
+    x = boundBoxHeight > boundBoxWidth ? boundBoxHeight : boundBoxWidth;
+
+    const normalizedCanvas = document.createElement("canvas");
+    normalizedCanvas.width = 20;
+    normalizedCanvas.height = 20;
+    const context = normalizedCanvas.getContext("2d");
+
+    context.drawImage(ctx.canvas, boundBox.minPoint.x, boundBox.minPoint.y, x, x, 0, 0, 20, 20)
+
+    // document.getElementById('p').appendChild(normalizedCanvas);
+
+    pm = getPixelMatrix(context);
+
+    const centerOfMass = getCenterOfMass(pm);
+
+    const normalizedCanvas2 = document.createElement("canvas");
+    // normalizedCanvas2.style.background = 'red';
+    normalizedCanvas2.width = 28;
+    normalizedCanvas2.height = 28;
+    const normalizedContext = normalizedCanvas2.getContext("2d");
+
+    const halfSize = 28 / 2;
+
+    normalizedContext.drawImage(normalizedCanvas, halfSize - centerOfMass.x, halfSize - centerOfMass.y);
+    // document.getElementById('p').appendChild(normalizedCanvas2);
+    return normalizedContext;
+}
+
+function getCenterOfMass(pixelMatrix) {
+    let numPixels = 0;
+    let sumX = 0;
+    let sumY = 0;
+    pixelMatrix.forEach((ys, y) => {
+        ys.forEach((pixel, x) => {
+            const weight = (pixel / 255)
+            sumX += (x * weight);
+            sumY += (y * weight);
+            numPixels += weight;
+        })
+    })
+
+    const x = sumX / numPixels;
+    const y = sumY / numPixels;
+
+    return { x, y };
+}
+
+function drawPoints(ctx, points) {
+    // draw a basic circle instead
+    if (points.length < 6) {
+        const b = points[0];
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, ctx.lineWidth / 2, 0, Math.PI * 2, !0);
+        ctx.closePath(); 
+        ctx.fill();
+        return
+    }
+    ctx.beginPath(), ctx.moveTo(points[0].x, points[0].y);
+    // draw a bunch of quadratics, using the average of two points as the control point
+    for (i = 1; i < points.length - 2; i++) {
+        const c = (points[i].x + points[i + 1].x) / 2;
+        const d = (points[i].y + points[i + 1].y) / 2;
+        ctx.quadraticCurveTo(points[i].x, points[i].y, c, d)
+    }
+    ctx.quadraticCurveTo(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+    ctx.stroke();
+}
+
+function draw(ctx, drawing) {
+    drawing.forEach(stroke => {
+        if (stroke.length > 0) {
+            drawPoints(ctx, stroke)
+        }
+    });
+}
+
+function main() {
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.lineWidth = 25;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+
+    let drawing = [[]]
+    let mouseIsDown = false;
+
+    canvas.addEventListener("mousemove", (event) => {
+        const x = event.offsetX;
+        const y = event.offsetY;
+        if (mouseIsDown) {
+            drawing[drawing.length - 1].push({x, y});
+            draw(ctx, drawing);
+        }
+    });
+
+    window.addEventListener("mousedown", () => {
+        mouseIsDown = true;
+    });
+
+    window.addEventListener("mouseup", () => {
+        if (drawing[drawing.length - 1].length > 0) {
+            drawing.push([])
+        }
+        mouseIsDown = false;
+    })
+
+    const predictionParagraph = document.getElementById('p-prediction')
+
+    const predictButton = document.getElementById('button-predict');
+    predictButton.onclick = () => {
+        const normalizedContext = normalize(ctx);
+        let pixelArray = getGreyScalePixelArray(normalizedContext);
+
+        pixelArray = Array.from(pixelArray);
+
+        const pixelMatrix = chunkArray(pixelArray, 28);
+
+        predictionParagraph.innerHTML = 'loading...'
+
+        predict(pixelMatrix).then((result) => {
+            console.log(result);
+            predictionParagraph.innerHTML = `label: ${result.label}, probabilty: ${result.probability}`
+        });
+    };
+
+    const clearButton = document.getElementById('button-clear');
+    clearButton.onclick = () => {
+        drawing = [[]];
+        ctx.clearRect(0, 0, 256, 256)
+        predictionParagraph.innerHTML = "";
+    }
+
 }
 
 main();
