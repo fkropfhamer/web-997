@@ -1,3 +1,4 @@
+import '../../../../styles/mnist.css';
 import { predict } from './mnistPredict';
 import { draw } from './mnistDraw';
 import { normalize, getGreyScalePixelArray, chunkArray } from './mnistNormalize';
