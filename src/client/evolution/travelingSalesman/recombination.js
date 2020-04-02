@@ -7,5 +7,10 @@ export function uniqueElementsOfArray(array) {
 }
 
 export function edgeRecombination(seq1, seq2) {
+    // TODO: implement!
+    if (Math.random() > 0.5) {
+        return seq2;
+    }
+
     return seq1;
 }
