@@ -67,6 +67,29 @@ module.exports = [
             path: path.resolve(__dirname, 'public', 'js'),
         },
     },
+    {
+        entry: path.resolve(__dirname, 'src', 'client', 'games', 'tictactoe', 'main.js'),
+        module: {
+        rules: [
+            {
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader", "postcss-loader"]
+            },
+        ],
+        },
+        resolve: {
+            extensions: ['*', '.js'],
+        },
+        output: {
+            filename: 'tictactoe.js',
+            path: path.resolve(__dirname, 'public', 'js'),
+        },
+    },
     /*{
         entry: path.resolve(__dirname, 'public', 'darkmode.js'),
         module: {
