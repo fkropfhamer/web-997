@@ -1,7 +1,7 @@
 import '../../../../styles/mnist.css';
-import { predict } from './mnistPredict';
-import { draw } from './mnistDraw';
-import { normalize, getGreyScalePixelArray, chunkArray } from './mnistNormalize';
+import { predict } from './predict';
+import { draw } from './draw';
+import { normalize, getGreyScalePixelArray, chunkArray } from './normalize';
 
 function main() {
     const canvas = document.getElementById("canvas");

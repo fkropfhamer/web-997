@@ -1,4 +1,4 @@
-import { chunkArray } from "../../../../src/client/ml/mnist/mnistNormalize";
+import { chunkArray } from "../../../../src/client/ml/mnist/normalize";
 
 describe('chunkArray', () => {
     it('chunks an array into equal parts', () => {

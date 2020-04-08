@@ -68,7 +68,7 @@ module.exports = [
         },
     },
     {
-        entry: path.resolve(__dirname, 'src', 'client', 'ml', 'mnist', 'mnist.js'),
+        entry: path.resolve(__dirname, 'src', 'client', 'ml', 'mnist', 'main.js'),
         module: {
         rules: [
             {
