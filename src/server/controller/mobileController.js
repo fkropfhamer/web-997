@@ -1,5 +1,5 @@
 const index = (req, res) => {
-    res.render('pages/index-mobile');
+    res.render('pages/mobile/index-mobile');
 }
 
 export default {

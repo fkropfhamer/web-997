@@ -1,9 +1,9 @@
 const about = (req, res) => {
-    res.render('pages/about');
+    res.render('pages/index/about');
 }
 
 const index = (req, res) => {
-    res.render('pages/index');
+    res.render('pages/index/index');
 }
 
 export default {

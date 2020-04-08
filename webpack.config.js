@@ -22,7 +22,7 @@ module.exports = [
         },
     },
     {
-        entry: path.resolve(__dirname, 'src', 'client', 'index.js'),
+        entry: path.resolve(__dirname, 'src', 'client', 'index', 'index', 'main.js'),
         module: {
         rules: [
             {
@@ -45,7 +45,7 @@ module.exports = [
         },
     },
     {
-        entry: path.resolve(__dirname, 'src', 'client', 'about.js'),
+        entry: path.resolve(__dirname, 'src', 'client', 'index', 'about', 'main.js'),
         module: {
         rules: [
             {

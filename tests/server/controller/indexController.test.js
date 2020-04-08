@@ -7,7 +7,7 @@ describe('indexController test', () => {
         indexController.index({}, mockResponse);
 
         expect(mockResponse.render).toHaveBeenCalled();
-        expect(mockResponse.render).toHaveBeenCalledWith('pages/index');
+        expect(mockResponse.render).toHaveBeenCalledWith('pages/index/index');
     });
 
     it('returns the right view for about', () => {
@@ -16,6 +16,6 @@ describe('indexController test', () => {
         indexController.about({}, mockResponse);
 
         expect(mockResponse.render).toHaveBeenCalled();
-        expect(mockResponse.render).toHaveBeenCalledWith('pages/about');
+        expect(mockResponse.render).toHaveBeenCalledWith('pages/index/about');
     })
 })

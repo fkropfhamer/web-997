@@ -7,6 +7,6 @@ describe('mobileController test', () => {
         mobileController.index({}, mockResponse);
 
         expect(mockResponse.render).toHaveBeenCalled();
-        expect(mockResponse.render).toHaveBeenCalledWith('pages/index-mobile');
+        expect(mockResponse.render).toHaveBeenCalledWith('pages/mobile/index-mobile');
     });
 })
